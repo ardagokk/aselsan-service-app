@@ -46,14 +46,13 @@ public class BusService {
             for (StopEntity entity3 : entity.getBusStop2()) {
                 stops2.add(entity3.getNo());
             }
-<<<<<<< HEAD
 
 
-=======
+
+
             Collections.sort(stops);
             Collections.sort(stops2);
             Collections.reverse(stops2);
->>>>>>> 3f70f96a0aeec508c0afeb5a3e99f38b4a04914e
             List<List<String>> allStops = new LinkedList<>();
             allStops.add(stops);
             allStops.add(stops2);

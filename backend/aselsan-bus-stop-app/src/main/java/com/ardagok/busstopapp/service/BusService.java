@@ -16,27 +16,21 @@ public class BusService {
     private final BusRepository busRepository;
 
     @Autowired
-
-
-    public BusService(BusRepository busRepository  ) {
+    public BusService(BusRepository busRepository) {
         this.busRepository = busRepository;
-
     }
 
     public List<BusEntity> getBuses() {
         return busRepository.findAll();
     }
 
-
     public void addNewBus(BusEntity busEntity) {
-
         busRepository.save(busEntity);
     }
 
     public Optional<BusEntity> getBusById(long id) {
         return busRepository.findById(id);
     }
-
 
     public HashMap<String, HashMap<String, Object>> getBusesMin() {
         HashMap<String, HashMap<String, Object>> busMinHashMap = new HashMap<>();
@@ -52,37 +46,36 @@ public class BusService {
             for (StopEntity entity3 : entity.getBusStop2()) {
                 stops2.add(entity3.getNo());
             }
+<<<<<<< HEAD
 
 
+=======
+            Collections.sort(stops);
+            Collections.sort(stops2);
+            Collections.reverse(stops2);
+>>>>>>> 3f70f96a0aeec508c0afeb5a3e99f38b4a04914e
             List<List<String>> allStops = new LinkedList<>();
             allStops.add(stops);
             allStops.add(stops2);
-            if(!allStops.get(0).isEmpty()){
+            if (!allStops.get(0).isEmpty()) {
                 busData.put("routes", allStops);
                 busMinHashMap.put(String.valueOf(entity.getNo()), busData);
             }
-
-
         }
         return busMinHashMap;
     }
-    public HashMap<String, Object> getRoutesMin(){
-        HashMap<String,Object> routesMin = new HashMap<>();
-        for(BusEntity entity: busRepository.findAll()){
+
+    public HashMap<String, Object> getRoutesMin() {
+        HashMap<String, Object> routesMin = new HashMap<>();
+        for (BusEntity entity : busRepository.findAll()) {
             LinkedList<String> routes = new LinkedList();
-
-            for(RouteEntity entity2: entity.getRoutes()){
-
+            for (RouteEntity entity2 : entity.getRoutes()) {
                 routes.add(MapBoxUtils.encode(List.of(entity2.getLineString().getCoordinates()), 5));
-
             }
-            routesMin.put(entity.getNo(),routes);
+            routesMin.put(entity.getNo(), routes);
         }
         return routesMin;
     }
-
-
-
 }
 
 

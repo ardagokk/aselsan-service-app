@@ -500,7 +500,7 @@ const App = () => {
       );
     } else {
       setShowArrivalsPopover({
-        webviewURL: url,
+        webviewURL,
         number: stopNumber,
       });
       $map.classList.add('fade-out');
@@ -512,7 +512,7 @@ const App = () => {
     setShowArrivalsPopover(false);
     $map.classList.remove('fade-out');
   };
-
+ 
   const _showBetweenPopover = (data) => {
     setShrinkSearch(true);
     setShowBetweenPopover(data);
@@ -2724,7 +2724,7 @@ const App = () => {
             ref={servicesList}
             onScroll={handleServicesScroll}
           >
-            <li class="ads-li" hidden={!services.length || !showAd}>
+             <li class="ads-li" hidden={!services.length || !showAd}>
               {showAd && <Ad key="ad" />}
             </li>
             {services.length
@@ -2801,6 +2801,9 @@ const App = () => {
               <li class="nada">No results.</li>
             )}
           </ul>
+    
+
+
           <div class="sidebar-ads" hidden={!showAd}>
             {showAd && <Ad key="ad2" />}
           </div>
@@ -2828,19 +2831,7 @@ const App = () => {
                   count: stopPopoverData.services.length,
                 })}{' '}
                 ∙{' '}
-                <a
-                  href={`/bus-first-last/#${stopPopoverData.number}`}
-                  target="_blank"
-                >
-                  {t('stop.firstLastBus')}{' '}
-                  <img
-                    src={openNewWindowImagePath}
-                    width="12"
-                    height="12"
-                    alt=""
-                    class="new-window"
-                  />
-                </a>
+             
               </h2>
               <BusServicesArrival
                 active={showStopPopover}
@@ -2852,20 +2843,7 @@ const App = () => {
             </ScrollableContainer>
             <div class="popover-footer">
               <div class="popover-buttons alt-hide">
-                <a
-                  href={`/bus-arrival/#${stopPopoverData.number}`}
-                  target="_blank"
-                  onClick={openBusArrival}
-                  class="popover-button primary"
-                >
-                  {t('glossary.busArrivals')}{' '}
-                  <img
-                    src={openNewWindowBlueImagePath}
-                    width="16"
-                    height="16"
-                    alt=""
-                  />
-                </a>
+             
                 {stopPopoverData.services.length > 1 && (
                   <a
                     href={`#/stops/${stopPopoverData.number}/routes`}

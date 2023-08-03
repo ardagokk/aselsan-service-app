@@ -48,8 +48,6 @@ public class BusService {
             }
 
 
-
-
             Collections.sort(stops);
             Collections.sort(stops2);
             Collections.reverse(stops2);

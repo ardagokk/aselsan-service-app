@@ -2724,8 +2724,8 @@ const App = () => {
             ref={servicesList}
             onScroll={handleServicesScroll}
           >
-             <li class="ads-li" hidden={!services.length || !showAd}>
-              {showAd && <Ad key="ad" />}
+            <li className="ads-li">
+              <img src="/images/aselsan-logo.png" alt="Reklam" />
             </li>
             {services.length
               ? (expandedSearchOnce ? services : services.slice(0, 25)).map(
